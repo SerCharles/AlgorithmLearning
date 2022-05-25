@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{CJKutf8}
+\usepackage{latexsym}
+\usepackage{pgfplots}  
+\usepackage{pgfplotstable}
+
+\title{Week 4}
+\author{软73 沈冠霖 2017013569}
+\begin{document}
+\begin{CJK}{UTF8}{gkai}
+\maketitle
+
+\section{T1} 
+证明：设$0 \leq \alpha \leq 0.5$，且n足够大，则设三次取的数分别为a，b，c，要求最坏为$\alpha, 1-\alpha$的分割的概率，也就是求中位数落在$(n\alpha,n - n\alpha)$间的概率。\\
+先考虑一种情况：$a\leq b \leq c \cap n\alpha \leq b \leq n - n\alpha$\\
+设$P(a\leq b \leq c | n\alpha \leq b \leq n - n\alpha) = \int_{\alpha}^{1-\alpha}x(1-x)dx$ = P1\\
+$P(n\alpha \leq b \leq n - n\alpha) = 1-2\alpha = P2$\\
+根据条件概率公式，所求概率 = $P1*P2$\\
+而a，b，c的大小排列有六种互斥，等概率的情况，所以总概率为 $6P1*P2 = 4\alpha^{3}-6\alpha^{2}+1$\\
+\section{T2}
+\paragraph{1}
+证明：
+假设存在常数$c_{1},c_{2}$,有对于$\forall n, c_{1}n^{2} \leq T(n) \leq c_{2}n^{2}$,而T(1)=1,必定存在这两个常数使得T(1)满足。\\
+设对于n = k满足条件，则对于n = k+1，$T(k+1) = T(k)+\theta(n)=T(k)+c(k+1)+d$,而$c_{1}k^{2} \leq T(k) \leq  c_{2}k^{2}$,只需要满足$2c_{1}k \leq ck+(c+d-1) \leq 2c_{2}k$即可,当k足够大时，取$c_{1} \leq \frac{c}{2} <c_{2}$即可 
+\paragraph{1}
+每次划分都返回r，相当于左边都是长n-1的段，右面无效段，因此有$T(n) = T(n-1) + \theta(n)$\\
+假设存在常数$c_{1},c_{2}$,有对于$\forall n, c_{1}n^{2} \leq T(n) \leq c_{2}n^{2}$,而T(1)=1,必定存在这两个常数使得T(1)满足。\\
+设对于n = k满足条件，则对于n = k+1，$T(k+1) = T(k)+\theta(n)=T(k)+c(k+1)+d$,而$c_{1}k^{2} \leq T(k) \leq  c_{2}k^{2}$,只需要满足$2c_{1}k \leq ck+(c+d-1) \leq 2c_{2}k$即可,当k足够大时，取$c_{1} \leq \frac{c}{2} <c_{2}$即可\\
+因此，$T(n) = \theta(n^{2})$
+\paragraph{2}
+
+1\qquad PARTITION'(A,p,r)\\
+2\qquad x = A[r]\\
+3\qquad i = p - 1\\
+4\qquad q = p - 1\\
+5\qquad for j = p  to  r-1\\
+6\qquad\qquad if A[j] $<$ x\\
+7\qquad\qquad\qquad  i = i + 1\\
+8\qquad\qquad\qquad exchange A[i] with A[j]\\
+9\qquad\qquad\qquad q = q + 1\\
+10\qquad\qquad\qquad exchange A[i] with A[q]\\
+11\qquad\qquad else if A[j] <= x\\
+12\qquad\qquad\qquad i = i + 1\\
+13\qquad\qquad\qquad exchange A[i] with A[j]\\
+14\qquad exchange A[i+1] with A[r]\\
+15\qquad t = i + 1\\
+15\qquad q = q + 1\\
+16\qquad return q,t\\
+\paragraph{3}
+
+1\qquad RANDOMIZED$\_$PARTITION'(A,p,r)\\
+2\qquad i = RANDOM(p,r)\\
+3\qquad exchange A[r] with A[i]\\
+4\qquad return PARTITION'(A,p,r)\\
+\\
+1\qquad QUICKSORT'(A,p,r)\\
+2\qquad if(p$<$r) then\\
+3\qquad (q,t)=RANDOMIZED$\_$PARTITION'(A,p,r)\\
+4\qquad QUICKSORT'(A,p,q-1)\\
+5\qquad QUICKSORT'(A,t+1,r)\\
+
+
+\paragraph{4}
+如果A[i] $!=$A[j]，那么这两个元素比较过的概率还是$\frac{2}{j-i+1}$\\
+而如果两个数相等，假设这个数出现了k次，则这两个元素比较过的概率是$\frac{k-1}{C_{K}^{2}}=\frac{2}{k}$，而因为$j-i+1\leq k$，因此新的比较次数小于等于原来的比较次数，因此结论不变
+
+\end{CJK}
+\end{document}

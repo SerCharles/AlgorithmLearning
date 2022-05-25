@@ -1,0 +1,2 @@
+StringMatch为命令行时间测试界面，随机生成数据。
+StringMatchMenu为QT图形界面

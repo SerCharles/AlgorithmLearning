@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{CJKutf8}
+\title{Week 1}
+\author{软73 沈冠霖 2017013569}
+\begin{document}
+\begin{CJK}{UTF8}{gkai}
+\maketitle
+\section{T1} 
+\paragraph{证明}
+因为 $\exists c = 3,n_{0} = 1,$对于$\forall n >= n_{0},$有$cn^{2}>=2n$, 所以 2n 属于$ O(n^{2}) $ \\
+因为$O(f(n))+\theta(f(n)) = \theta(f(n))$，则原式成立
+\section{T2} 
+\paragraph{证明}
+若f(n)=$\theta(g(n))$,则$\exists c>0,$使得$n_{0}>0$，对于$\forall n>n_{0},f(n)>=cg(n)$。与f(n)=o(g(n))矛盾，因此所有f(n)=$\theta(g(n))$构成的集合和所有f(n)=o(g(n)）构成的集合二者交集为空
+\section{T3} 
+\paragraph{证明}
+取f(n) = sin($\pi$n/2)+1,g(n) = 1,则\\
+$\exists c=2$,使得 $\exists n_{0} = 1,\forall n > n_{0},0<=f(n)<=cg(n)$,因此f(n)=O(g(n))\\
+但是对于$\forall n_{0}>0$,总是$\exists n>n_{0},f(n) = 0,$,不存在c>0,使得$\exists n_{0},\forall n > n_{0},f(n)>=cg(n)$,因此$f(n) \neq \theta(g(n))$\\
+同时$\exists c=0.1, \forall n_{0} > 0,\exists n > n_{0}$使得f(n) = 2,f(n)>=cg(n),因此 $f(n) \neq o(g(n))$\\
+因此$\exists f(n)=O(g(n)), f(n) \neq o(g(n))$且$f(n) \neq \theta(g(n))$,原式成立\\
+但是这里举出的反例在自然数定义域中不单调递增，对于一个算法复杂度来说没有实际意义\\
+\section{T4} 
+\paragraph{证明}
+不妨令n=某一正实数$n_{t}$时，f(n)>=g(n),取c = 0.5,有$max(f(n_{t}),g(n_{t}))>=c(f(n_{t})+g(n_{t}))$，反之一样成立，则$\exists n_{0} = 1, \forall n_{t} > n_{0},max(f(n_{t}),g(n_{t}))>=c(f(n_{t})+g(n_{t}))$\\
+而取c= 1，$\exists n_{0} = 1, \forall n > 0, f(n)+g(n)-max(f(n),g(n)) = min(f(n),g(n)) >= 0$\\
+综上，$max(f(n),g(n))=\theta(f(n)+g(n))$
+\section{T5} 
+\paragraph{第一问}
+由增长率由最小到最大可划分如下等价类：（每行一个等价类）\\
+1,$n^{1/lgn}$\\
+lg(lg*n)\\
+lg*(lgn)\\
+lg*(lgn)\\
+lg*n\\
+$2^{lg*n}$\\
+ln(ln n)\\
+$\sqrt{lgn}$\\
+ln n\\
+$(lg n)^{2}$\\
+$(\sqrt{2})^{lgn}\\
+n,2^{lgn}\\
+nlgn,lg(n!)\\
+n^{2},4^{lgn}\\
+n^{3}\\
+2^{\sqrt{2lgn}}\\
+(1.5)^{n}\\
+2^{n}\\
+e^{n}\\
+n*2^{n}\\
+n^{lg lgn},(lg n)!,(lgn)^{lgn}\\
+n!\\
+(n+1)!\\
+2^{2^{n}}\\
+2^{2^{n+1}}$\\
+方法：对于阶乘，幂取对数处理，对于对数，取指数处理。应用结论$lg(n!)=\theta(nlgn)$\\
+\paragraph{第二问}
+$f(n) = 2^{2^{2n}} + (-1)^{n}2^{2^{2n}}$，n为正整数
+\end{CJK}
+\end{document}
